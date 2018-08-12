@@ -43,6 +43,16 @@ REM //
 REM set _NT_TARGET_VERSION=0x0502
 
 REM //
+REM // Build Environment Parameters
+REM //
+
+REM //
+REM // BETYPE: Build environment type [ms: mstools, gnu: gcc]
+REM //
+
+set BETYPE=gnu
+
+REM //
 REM // Call sizzle
 REM //
 

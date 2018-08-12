@@ -164,9 +164,23 @@ if not exist "%BETOOLS%" (
 )
 
 set BEMSTOOLS=%BETOOLS%\mstools
+set BEGNU=%BETOOLS%\gnu\bin
 set BEIDW=%BETOOLS%\idw
 set BEREPOIDW=%BETOOLS%\idw\%_RepoName%
 set BEPERL=%BETOOLS%\perl\bin
+
+REM //
+REM // If the build environment type is set to 'gnu', ensure that the GNU
+REM // tools directory exists.
+REM //
+
+if [%BETYPE%] equ [gnu] (
+if not exist "%BEGNU%" (
+    echo.
+    echo == Unsupported build environment type ==
+    echo GNU build environment is not available for %NTARCH%.
+    goto End
+))
 
 REM //
 REM // Check if there exists a repository-specific IDW tools directory.
@@ -189,7 +203,11 @@ if [%PROCESSOR_ARCHITECTURE%] equ [AMD64] (
     set BEPERL=%BEROOT%\tools\x86\perl\bin
 )
 
-path %PATH%;%BETOOLS%;%BEREPOIDW%;%BEIDW%;%BEMSTOOLS%;%BEPERL%
+if [%BETYPE%] equ [gnu] (
+    path %PATH%;%BETOOLS%;%BEREPOIDW%;%BEIDW%;%BEMSTOOLS%;%BEGNU%;%BEPERL%
+) else (
+    path %PATH%;%BETOOLS%;%BEREPOIDW%;%BEIDW%;%BEMSTOOLS%;%BEPERL%
+)
 
 REM //
 REM // Set tools16 path if the host processor architecture is x86. 16-bit
