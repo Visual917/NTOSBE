@@ -38,4 +38,5 @@ rcdll.dll           Local (src\sdktools\rcdll)
 
 << TOOLS16 >>
 nosrvbld.exe        Local (src\sdktools\nosrvbld)
+reloc.exe           Local (src\sdktools\reloc)
 *                   External (Microsoft)
