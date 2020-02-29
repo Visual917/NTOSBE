@@ -126,11 +126,17 @@ if errorlevel 1 goto Error
 call buildlocaltool.cmd wcshdr sdktools\wcshdr idw\wcshdr.exe idw\wcshdr.exe
 if errorlevel 1 goto Error
 
-call buildlocaltool.cmd reloc sdktools\reloc bldtools\reloc.exe tools16\reloc.exe
-if errorlevel 1 goto Error
+if [%NTARCH%] equ [x86] (
+    REM //
+    REM // Build x86 16-bit tools for x86 toolchain only.
+    REM //
 
-call buildlocaltool.cmd nosrvbld sdktools\nosrvbld bldtools\nosrvbld.exe tools16\nosrvbld.exe
-if errorlevel 1 goto Error
+    call buildlocaltool.cmd reloc sdktools\reloc bldtools\reloc.exe tools16\reloc.exe
+    if errorlevel 1 goto Error
+
+    call buildlocaltool.cmd nosrvbld sdktools\nosrvbld bldtools\nosrvbld.exe tools16\nosrvbld.exe
+    if errorlevel 1 goto Error
+)
 
 REM //
 REM // Clean up temporary binary directory.
