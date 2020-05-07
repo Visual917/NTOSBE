@@ -37,6 +37,7 @@ rc.exe              Local (src\sdktools\rc)
 rcdll.dll           Local (src\sdktools\rcdll)
 
 << TOOLS16 >>
+mkpublic.exe        Local (src\sdktools\mkpublic)
 nosrvbld.exe        Local (src\sdktools\nosrvbld)
 reloc.exe           Local (src\sdktools\reloc)
 *                   External (Microsoft)
