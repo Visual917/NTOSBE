@@ -24,6 +24,7 @@ set _BuildArch=%4
 set _BuildType=%5
 
 REM // Validate that NtRootPath exists.
+set _NtRootPath="C:\Documents and Settings\Admin\Desktop\windows_nt_4_source_code\nt4\private"
 if not exist "%_NtRootPath%" (
     echo Invalid NtRootPath.
     goto End
